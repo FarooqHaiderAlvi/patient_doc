@@ -5,10 +5,11 @@ ActiveAdmin.register Doctor do
    form do |f|
       f.inputs "Doctor Details" do
          f.input :type, as: :hidden, input_html: { value: "Doctor" }
+         f.input :name
          f.input :username
          f.input :password, as: :password
          f.input :password_confirmation, as: :password
-         f.input :name
+
       end
       f.actions
    end
