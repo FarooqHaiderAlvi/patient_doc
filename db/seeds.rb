@@ -9,11 +9,10 @@
 
 # seed is used to populate initial data
 # populate mean creating new record
-#
+
 Doctor.create!(
   name: 'Dr. John Smith',
-  username: 'john_smith',
+  email: 'john_smith',
   password: '123456',
-  password_confirmation: '123456',
-  type: 'Doctor'
+  password_confirmation: '123456'
 )

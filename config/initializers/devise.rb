@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '43daa7af6c3c4afb3005e6f89a98485121e3b6bf21a59f82c6896e18aad3ddc72c581c528686af508e1d2943ebcd858500c891a9f1802df9c05169d00542bb47'
+  # config.secret_key = '54e883fb9de124efc55de5ad416c274893e35fc80281b583d65f209b0bc3028111305067f5d041d0abc3df056d58a06315305f6c2fbb9b38e83b130ddf2c4e2e'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -126,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'a268ab2e460b7d92490b066d089c8f9d4a65be3dc554d02a321a4fbfd20365eecc0b57aea1dc4530f87c095dd56005563aeee32463504e7ea9adce8367a61f35'
+  # config.pepper = '86b7dd63483638510c1827b37a7bcfbad5b1e440c9ea282019868db120f6c96d23157607ea381de70e0faeb83a95c09ef22033ba88d2d151e05d878df3e46620'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -169,6 +169,8 @@ Devise.setup do |config|
   # Invalidates all the remember me tokens when the user signs out.
   config.expire_all_remember_me_on_sign_out = true
 
+  # config.default_scope = :user
+
   # If true, extends the user's remember period when remembered via cookie.
   # config.extend_remember_period = false
 
@@ -183,7 +185,10 @@ Devise.setup do |config|
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
-  config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
+  # config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
+  config.email_regexp = /\A[a-zA-Z.-]+@[^@\s]+\.[a-z]+\z/
+
+
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
@@ -252,7 +257,7 @@ Devise.setup do |config|
 
   # Set this configuration to false if you want /users/sign_out to sign out
   # only the current scope. By default, Devise signs out all scopes.
-  # config.sign_out_all_scopes = true
+  config.sign_out_all_scopes = false
 
   # ==> Navigation configuration
   # Lists the formats that should be treated as navigational. Formats like
@@ -266,7 +271,8 @@ Devise.setup do |config|
   # config.navigational_formats = ['*/*', :html, :turbo_stream]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
-  config.sign_out_via = :delete
+   config.sign_out_via = :delete
+
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
