@@ -5,14 +5,14 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-# AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
 # seed is used to populate initial data
 # populate mean creating new record
 
-Doctor.create!(
-  name: 'Dr. John Smith',
-  email: 'john_smith',
-  password: '123456',
-  password_confirmation: '123456'
-)
+# Doctor.create!(
+#   name: 'Dr. John Smith',
+#   email: 'john_smith',
+#   password: '123456',
+#   password_confirmation: '123456'
+# )
