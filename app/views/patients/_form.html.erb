@@ -1,0 +1,35 @@
+<%= form_with model: [doctor, patient] do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    <% patient.errors.full_messages_for(:name).each do |message| %>
+    <div class="errors"><%= message %></div>
+  <% end %>
+
+  </p>
+  <br>
+  <p>
+    <%= form.label :email %><br>
+    <%= form.email_field :email %>
+    <% patient.errors.full_messages_for(:email).each do |message| %>
+    <div class="errors"><%= message %></div>
+  <% end %>
+  </p>
+  <br>
+  <p>
+    <%= form.label :age %><br>
+    <%= form.number_field :age %>
+    <% patient.errors.full_messages_for(:age).each do |message| %>
+    <div class="errors"><%= message %></div>
+  <% end %>
+  </p>
+  <br>
+  <p>
+    <%= form.submit %>
+  </p>
+
+  <br>
+
+<% end %>
+<br> <br>
+ <%= link_to "Dashboard", root_path %>

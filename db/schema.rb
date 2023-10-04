@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_02_075949) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_02_084827) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -50,4 +50,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_02_075949) do
     t.index ["reset_password_token"], name: "index_doctors_on_reset_password_token", unique: true
   end
 
+  create_table "patients", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.integer "age"
+    t.integer "doctor_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_patients_on_doctor_id"
+  end
+
+  add_foreign_key "patients", "doctors"
 end
