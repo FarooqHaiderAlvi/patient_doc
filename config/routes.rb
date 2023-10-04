@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   devise_for :doctors
+
   root 'doctors#dashboard'
 
+  resources :doctors do
+    resources :patients
+  end
 
 end

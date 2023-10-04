@@ -3,7 +3,6 @@ ActiveAdmin.register Doctor do
   # Customize the form for creating a new Doctor
   form do |f|
     f.inputs "Doctor Details" do
-
       f.input :name
       f.input :email
       f.input :password, as: :password
