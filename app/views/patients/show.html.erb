@@ -1,23 +1,27 @@
-
 <h1>Patient Details</h1>
 
 <ul>
-  <li>Name: <%=@patient.name %></li>
-  <br>
-  <br>
-  <li>Email: <%=@patient.email %></li>
-  <br>
-  <br/>
-  <li>Age: <%=@patient.age %></li>
+  <% if !@patient.blank? %>
+    <li>Name: <%= @patient.name %></li>
+    <br>
+    <br>
+    <li>Email: <%= @patient.email %></li>
+    <br>
+    <br/>
+    <li>Age: <%= @patient.age %></li>
+  <% else %>
+    <li>No record</li>
+  <% end %>
 </ul>
 
 <br/>
 
-<%= button_to "Destroy", doctor_patient_path(@patient), method: :delete,
-                  data: { method_turbo_confirm: "Are you sure?" }%>
-<br/>
+
 
 <%= link_to "Go Back ", doctor_patients_path %>  | <%= link_to "Dashboard", root_path %>
 <br>
 <br>
 <%= link_to "Edit Patient", edit_doctor_patient_path(@patient) %>
+<br>
+
+<%= link_to "Create Appointment", new_doctor_patient_appointment_path(doctor_id: current_doctor.id, patient_id: @patient.id) %>

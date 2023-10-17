@@ -1,0 +1,23 @@
+<ul>
+  <%if @patients.blank? %>
+    <h1>No Appointed Patient found</h1>
+    <%else %>
+
+    <% @patients.each_with_index  do |patient,index| %>
+      <li>
+      <h2> <%= "Apt NO. #{index+1}"%></h2>
+        <ul>
+          <% patient.appointments.each do |appointment| %>
+            <li>
+              <%= "Your Appointment is scheduled with #{patient.name} on #{appointment.appointment_date}" %>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+    <%end %>
+
+</ul>
+
+
+

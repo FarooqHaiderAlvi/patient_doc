@@ -8,3 +8,6 @@
 
 <%= link_to "View all Patients", doctor_patients_path(doctor_id: current_doctor.id) %>
 
+
+<%= link_to "View appointed Patients", patients_doctors_patients_path(doctor_id: current_doctor.id) %>
+

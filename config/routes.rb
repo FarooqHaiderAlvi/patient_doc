@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'appointments/index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -7,8 +8,13 @@ Rails.application.routes.draw do
 
   root 'doctors#dashboard'
 
+  get 'patients/doctors_patients'
+
   resources :doctors do
-    resources :patients
+    resources :appointments
+    resources :patients do
+      resources :appointments
+    end
   end
 
 end
