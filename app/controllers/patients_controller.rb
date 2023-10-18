@@ -57,12 +57,13 @@ class PatientsController < ApplicationController
     # @patient = current_doctor.patients.find_by(id: params[:patient_id])
     # @patient = current_doctor.patients.where(doctor_id: current_doctor.id).select(:id, :name, :email, :age).find(params[:patient_id])
     # @patient = current_doctor.patients.where(name: 'raza').find_by(id: params[:id])
-    @patient = Patient.where(doctor_id: current_doctor.id).find_by(id: params[:id])
+    # @patient = Patient.where(doctor_id: current_doctor.id).find_by(id: params[:id]) this one using before
+    @patient = Patient.find_by(id: params[:id])
 
 
     puts "==============================="
     puts "#{current_doctor.id}+#{current_doctor.name}"
-    puts "@patient: #{@patient.inspect}" # Debugging statement
+    puts "@patient: #{@patient.inspect}"
 
     puts "==========================="
 

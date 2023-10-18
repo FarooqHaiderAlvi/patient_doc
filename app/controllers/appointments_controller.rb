@@ -3,12 +3,12 @@ class AppointmentsController < ApplicationController
   end
 
   def new
-    @patient = Patient.where(doctor_id: current_doctor.id).find_by(id: params[:patient_id])
+    @patient = Patient.find_by(id: params[:patient_id])
     @appointment=@patient.appointments.new
    end
 
   def create
-    @patient = Patient.where(doctor_id: current_doctor.id).find_by(id: params[:patient_id])
+    @patient = Patient.find_by(id: params[:patient_id])
     @appointment = @patient.appointments.create(appointment_params)
     @appointment.doctor_id = current_doctor.id
 
@@ -23,7 +23,7 @@ class AppointmentsController < ApplicationController
 
   def show
     @doctor_id = params[:doctor_id]
-    @patient = Patient.where(doctor_id: current_doctor.id).find_by(id: params[:patient_id])
+    @patient = Patient.find_by(id: params[:patient_id])
     @appointment=@patient.appointments.find(params[:id])
 
 
