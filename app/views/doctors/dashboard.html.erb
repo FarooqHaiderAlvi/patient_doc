@@ -1,14 +1,21 @@
 
-<h1 class="" >Welcome To Dashboard</h1>
-
-<%= button_to "Sign Out",  destroy_doctor_session_path, method: :delete%>
-<br/><br/><br/>
-
-<%= link_to "Create Patient", new_doctor_patient_path(doctor_id: current_doctor.id)%>
-<br><br>
-
-<%= link_to "View all Patients", doctor_patients_path(doctor_id: current_doctor.id) %>
+<!-- Navigation-->
 
 
-<%= link_to "View appointed Patients", patients_doctors_patients_path(doctor_id: current_doctor.id) %>
+<%= render 'doctors/navbar' %>
+<br>
+<br>
+<br>
+<br>
+<h1 class="text-center">Welcome To Doctor Dashboard</h1>
+
+
+
+
+
+
+
+
+
+
 

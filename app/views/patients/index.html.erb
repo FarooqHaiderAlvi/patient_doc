@@ -1,4 +1,8 @@
-<h1>Patients</h1>
+<%= render 'doctors/navbar' %>
+<br>
+<br>
+<br>
+<h1 class="text-center">Patients List</h1>
 
 <ul>
   <% if @patients.present? %>
@@ -12,6 +16,43 @@
   <% end %>
 </ul>
 
+
+
+<%if @patients.blank? %>
+  <h1>No  Patient found</h1>
+<%else %>
+  <div class="container-md">
+    <table class="table table-bordered justify-content-center table table-striped table-hover">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Email</th>
+      </tr>
+      </thead>
+
+      <tbody>
+
+      <% @patients.each_with_index  do |patient,index| %>
+        <tr>
+            <th scope="row"><%= "#{index+1}"%></th>
+            <td><%=patient.name %></td>
+            <td><%=patient.age %></td>
+            <td><%=patient.email %></td>
+
+            </tr>
+
+      <% end %>
+
+      </tbody>
+
+    </table>
+  </div>
+
+<%end %>
+
+
 <%=  form_with(url: doctor_patients_path, method: 'get') do |form| %>
   <%= form.text_field :query, placeholder: "Search by Name" %>
   <%= form.submit "Search" %>
@@ -19,4 +60,4 @@
 
 
 <br>
-<%= link_to "Dashboard", root_path %>
+<%#= link_to "Dashboard", root_path %>
