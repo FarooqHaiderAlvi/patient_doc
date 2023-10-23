@@ -50,11 +50,11 @@ class PatientsController < ApplicationController
     @patients = current_doctor.patients.distinct
   end
 
+  private
+
   def find_patient
     @patient = Patient.find(params[:id])
   end
-
-  private
 
   def patient_params
     params.require(:patient).permit(:name, :email, :age)
