@@ -6,15 +6,14 @@ Rails.application.routes.draw do
 
   devise_for :doctors
 
-  root 'doctors#dashboard'
+    root 'doctors#dashboard'
+    get 'patients/doctors_patients'
 
-  get 'patients/doctors_patients'
-
-  resources :doctors do
-    resources :appointments
-    resources :patients do
+    resources :doctors do
       resources :appointments
+      resources :patients do
+        resources :appointments
+      end
     end
-  end
 
 end

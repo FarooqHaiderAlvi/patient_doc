@@ -1,8 +1,5 @@
 <h1>Update Patient</h1>
-
-<%#= render "form", doctor: current_doctor, patient: @patient %>
-
-<%= form_with model: [current_doctor,@patient ] do |form| %>
+<%= form_with model: [current_doctor, @patient] do |form| %>
   <p>
     <%= form.label :name %><br>
     <%= form.text_field :name %>
@@ -32,8 +29,4 @@
     <%= form.submit %>
   </p>
 
-  <br>
-
 <% end %>
-<br> <br>
-<%#= link_to "Dashboard", root_path %>

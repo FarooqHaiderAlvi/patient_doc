@@ -1,19 +1,14 @@
-<%= render 'doctors/navbar' %>
-
-<br>
-<br>
-<br>
 <h2 class="text-center">Appointment Details</h2>
 
-
-  <%if @patients.blank? %>
-    <h1>No Appointed Patient found</h1>
-  <%else %>
+<% if @patients.blank? %>
+  <h1>No Appointed Patient found</h1>
+<% else %>
   <div class="container-md">
     <table class="table table-bordered justify-content-center table table-striped table-hover">
       <thead>
       <tr>
-        <th scope="col">#</th>
+        <th scope="col">Apt Id</th>
+        <th scope="col">patient Id</th>
         <th scope="col">Name</th>
         <th scope="col">Age</th>
         <th scope="col">Email</th>
@@ -21,23 +16,20 @@
       </tr>
       </thead>
 
-
-
       <tbody>
 
+      <% @patients.each do |patient| %>
 
-      <% @patients.each_with_index  do |patient,index| %>
-        <tr>
           <% patient.appointments.each do |appointment| %>
+          <tr>
+            <th scope="row"><%= appointment.id %></th>
+            <th scope="row"><%= patient.id %></th>
+            <td><%= patient.name %></td>
+            <td><%= patient.age %></td>
+            <td><%= patient.email %></td>
+            <td><%= appointment.appointment_date %></td>
 
-
-            <th scope="row"><%= "#{index+1}"%></th>
-            <td><%=patient.name %></td>
-            <td><%=patient.age %></td>
-            <td><%=patient.email %></td>
-            <td><%=appointment.appointment_date %></td>
-
-            </tr>
+        </tr>
           <% end %>
       <% end %>
 
@@ -46,8 +38,8 @@
     </table>
   </div>
 
- <%end %>
-</ul>
+<% end %>
+
 
 
 

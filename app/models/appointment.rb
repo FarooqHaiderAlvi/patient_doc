@@ -6,7 +6,6 @@ class Appointment < ApplicationRecord
   validate :past_appointment_date
   validate :doctor_or_patient_has_no_appointment
 
-
   private
 
   def doctor_or_patient_has_no_appointment

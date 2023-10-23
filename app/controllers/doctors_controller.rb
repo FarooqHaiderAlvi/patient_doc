@@ -1,6 +1,4 @@
 class DoctorsController < ApplicationController
-
-  before_action :authenticate_doctor!
-  def dashboard
+    def dashboard
   end
 end

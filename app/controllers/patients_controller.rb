@@ -5,7 +5,6 @@ class PatientsController < ApplicationController
     if !params[:query].blank?
       @patients = Patient.where("name LIKE ?", "%#{params[:query]}%")
     else
-      # @patients = Patient.where(doctor_id: current_doctor.id).select(:id, :name, :email, :age)
       @patients = Patient.all
     end
   end
@@ -15,7 +14,6 @@ class PatientsController < ApplicationController
   end
 
   def create
-
     @patient = current_doctor.patients.new(patient_params)
     @patient.doctor_id=current_doctor.id
     if @patient.save
@@ -26,11 +24,11 @@ class PatientsController < ApplicationController
   end
 
   def edit
-    # before_action method
+    # before_action find_patient
   end
 
   def update
-    # before_action method
+    # before_action find_patient
     if @patient.update(patient_params)
       redirect_to doctor_patient_path(current_doctor, @patient)
     else
@@ -39,34 +37,21 @@ class PatientsController < ApplicationController
   end
 
   def show
-    # before action find_doctor
+    # before action find_patient
   end
 
   def destroy
-    # before action find_doctor
+    # before action find_patient
     @patient.destroy
     redirect_to doctor_patients_path, status: :see_other
   end
 
   def doctors_patients
-    @patients=@patients = current_doctor.patients
-
+    @patients = current_doctor.patients.distinct
   end
 
   def find_patient
-    # @patient = current_doctor.patients.find_by(id: params[:patient_id])
-    # @patient = current_doctor.patients.where(doctor_id: current_doctor.id).select(:id, :name, :email, :age).find(params[:patient_id])
-    # @patient = current_doctor.patients.where(name: 'raza').find_by(id: params[:id])
-    # @patient = Patient.where(doctor_id: current_doctor.id).find_by(id: params[:id]) this one using before
-    @patient = Patient.find_by(id: params[:id])
-
-
-    puts "==============================="
-    puts "#{current_doctor.id}+#{current_doctor.name}"
-    puts "@patient: #{@patient.inspect}"
-
-    puts "==========================="
-
+    @patient = Patient.find(params[:id])
   end
 
   private

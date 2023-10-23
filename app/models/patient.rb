@@ -11,6 +11,7 @@ class Patient < ApplicationRecord
   def self.ransackable_attributes(auth_object = nil)
     ["age", "created_at", "doctor_id", "email", "id", "name", "updated_at"]
   end
+
   def self.ransackable_associations(auth_object = nil)
     ["appointments", "doctor", "doctors"]
   end
@@ -18,6 +19,7 @@ class Patient < ApplicationRecord
   def capitalize
     self.name=name.capitalize
   end
+
   has_many :appointments
   has_many :doctors, through: :appointments
 
