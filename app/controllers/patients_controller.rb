@@ -3,9 +3,9 @@ class PatientsController < ApplicationController
 
   def index
     if !params[:query].blank?
-      @patients = current_doctor.patients.where("name LIKE ?", "%#{params[:query]}%")
+      @patients = Patient.where("name LIKE ?", "%#{params[:query]}%")
     else
-      @patients = current_doctor.patients
+      @patients = Patient.all
     end
   end
 
@@ -14,8 +14,8 @@ class PatientsController < ApplicationController
   end
 
   def create
-    # before action find_doctor
     @patient = current_doctor.patients.new(patient_params)
+    @patient.doctor_id=current_doctor.id
     if @patient.save
       redirect_to doctor_patient_path(doctor_id: current_doctor.id, id: @patient.id)
     else
@@ -24,11 +24,11 @@ class PatientsController < ApplicationController
   end
 
   def edit
-    # before action find_doctor
+    # before_action find_patient
   end
 
   def update
-    # before action find_doctor
+    # before_action find_patient
     if @patient.update(patient_params)
       redirect_to doctor_patient_path(current_doctor, @patient)
     else
@@ -37,20 +37,24 @@ class PatientsController < ApplicationController
   end
 
   def show
-    # before action find_doctor
+    # before action find_patient
   end
 
   def destroy
-    # before action find_doctor
+    # before action find_patient
     @patient.destroy
     redirect_to doctor_patients_path, status: :see_other
   end
 
-  def find_patient
-    @patient = current_doctor.patients.find(params[:id])
+  def doctors_patients
+    @patients = current_doctor.patients.distinct
   end
 
   private
+
+  def find_patient
+    @patient = Patient.find(params[:id])
+  end
 
   def patient_params
     params.require(:patient).permit(:name, :email, :age)

@@ -1,23 +1,29 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <title>PatientDoc</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>PatientDoc</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "styles", "data-turbo-track": "reload" %>
 
-  <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <%= javascript_importmap_tags %>
+  <%= javascript_include_tag 'script'%>
 
-  <%= yield %>
 
-  <footer>
-    &copy; 2023 My App
-  </footer>
-  </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+<%= render 'layouts/navbar' %>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<%= yield %>
+
+<footer>
+  &copy; 2023 My App
+</footer>
+</body>
 </html>

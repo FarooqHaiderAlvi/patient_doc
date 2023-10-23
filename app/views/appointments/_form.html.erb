@@ -1,0 +1,21 @@
+<%= form_with model: [doctor, patient, appointment] do |form| %>
+  <p>
+    <%= form.label :appointment_date %>
+    <%= form.datetime_field :appointment_date %>
+    <% appointment.errors.full_messages_for(:appointment_date).each do |message| %>
+    <div class="errors"><%= message %></div>
+  <% end %>
+
+  </p>
+  <br>
+  <br>
+  <br>
+  <p>
+    <%= form.submit %>
+  </p>
+
+  <br>
+
+<% end %>
+<br> <br>
+

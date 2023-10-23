@@ -1,3 +1,32 @@
 <h1>Update Patient</h1>
+<%= form_with model: [current_doctor, @patient] do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    <% @patient.errors.full_messages_for(:name).each do |message| %>
+    <div class="errors"><%= message %></div>
+  <% end %>
 
-<%= render "form", doctor: current_doctor, patient: @patient %>
+  </p>
+  <br>
+  <p>
+    <%= form.label :email %><br>
+    <%= form.email_field :email %>
+    <% @patient.errors.full_messages_for(:email).each do |message| %>
+    <div class="errors"><%= message %></div>
+  <% end %>
+  </p>
+  <br>
+  <p>
+    <%= form.label :age %><br>
+    <%= form.number_field :age %>
+    <% @patient.errors.full_messages_for(:age).each do |message| %>
+    <div class="errors"><%= message %></div>
+  <% end %>
+  </p>
+  <br>
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>
