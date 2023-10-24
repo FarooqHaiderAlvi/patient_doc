@@ -1,0 +1,16 @@
+<h2>Tick the checkbox if You have visited the patient</h2>
+<%= form_with model: [@appointment, @visit] do |form| %>
+
+
+  <div class="container-md mx-2">
+    <%= form.label :has_visited %>
+    <%= form.check_box :has_visited %>
+    <% @visit.errors.full_messages_for(:has_visited).each do |message| %>
+      <div class="errors" ><%= message %></div>
+      <%end %>
+    <br>
+    <br>
+    <%= form.submit "Save" %>
+  </div>
+
+<% end %>
