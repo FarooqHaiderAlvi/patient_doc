@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_16_092741) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_24_073150) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -70,7 +70,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_16_092741) do
     t.index ["doctor_id"], name: "index_patients_on_doctor_id"
   end
 
+  create_table "visits", force: :cascade do |t|
+    t.boolean "has_visited"
+    t.integer "appointment_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["appointment_id"], name: "index_visits_on_appointment_id"
+  end
+
   add_foreign_key "appointments", "doctors"
   add_foreign_key "appointments", "patients"
   add_foreign_key "patients", "doctors"
+  add_foreign_key "visits", "appointments"
 end

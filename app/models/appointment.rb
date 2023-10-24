@@ -5,7 +5,7 @@ class Appointment < ApplicationRecord
   validates :appointment_date, presence: true
   validate :past_appointment_date
   validate :doctor_or_patient_has_no_appointment
-
+  has_one :visit
   private
 
   def doctor_or_patient_has_no_appointment
@@ -35,4 +35,5 @@ class Appointment < ApplicationRecord
       errors.add(:appointment_date, " can't be in the past")
     end
   end
+
 end

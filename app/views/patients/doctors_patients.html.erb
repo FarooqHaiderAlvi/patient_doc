@@ -13,14 +13,14 @@
         <th scope="col">Age</th>
         <th scope="col">Email</th>
         <th scope="col">Date and Time</th>
+        <th scope="col">Visit Patient</th>
+        <th scope="col">Appointment Status</th>
       </tr>
       </thead>
 
       <tbody>
-
       <% @patients.each do |patient| %>
-
-          <% patient.appointments.each do |appointment| %>
+        <% patient.appointments.each do |appointment| %>
           <tr>
             <th scope="row"><%= appointment.id %></th>
             <th scope="row"><%= patient.id %></th>
@@ -28,18 +28,13 @@
             <td><%= patient.age %></td>
             <td><%= patient.email %></td>
             <td><%= appointment.appointment_date %></td>
-
-        </tr>
-          <% end %>
+            <td><%= link_to "visit Patient", new_appointment_visit_path(appointment.id) %></td>
+            <td><%= appointment.visit ? "Visited Patient" : "Not Visited" %></td>
+          </tr>
+        <% end %>
       <% end %>
-
       </tbody>
-
     </table>
   </div>
 
 <% end %>
-
-
-
-
