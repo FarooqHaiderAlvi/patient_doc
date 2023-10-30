@@ -1,1 +1,40 @@
 <h1>You have visited this Patient</h1>
+<br>
+<% if @prescription %>
+
+  <% unless @medicines.blank? %>
+    <%= link_to "Download Prescription", prescription_medicine_path(@medicines), class: "btn btn-primary" %>
+    <h2 class="text-center">Prescribed Medicines</h2>
+    <table class="table table-bordered justify-content-center table table-striped table-hover">
+      <thead>
+      <tr>
+        <th scope="col">Medicine Name</th>
+        <th scope="col">Dosage in mg/ml</th>
+        <th scope="col">Per day Dosage</th>
+        <th scope="col">In-take for</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @medicines.each do |medicine| %>
+        <tr>
+          <th scope="row"><%= medicine.name %></th>
+          <th scope="row"><%= medicine.dosage %></th>
+          <td><%= medicine.frequency %></td>
+          <td><%= medicine.duration %></td>
+        </tr>
+      <% end %>
+
+      </tbody>
+    </table>
+  <% end %>
+<h2 class="text-center"> Add More Medicines</h2>
+  <%= render 'medicines/form' %>
+
+
+<% else %>
+  <%= render 'prescriptions/form' %>
+
+
+<% end %>
+

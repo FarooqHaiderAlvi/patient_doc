@@ -27,7 +27,8 @@ gem "turbo-rails"
 gem "devise"
 gem "activeadmin"
 gem "sassc"
-
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
