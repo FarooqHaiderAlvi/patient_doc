@@ -1,0 +1,67 @@
+<%= wicked_pdf_stylesheet_link_tag 'PdfForm' %>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-3 d-flex justify-content-around align-i ">
+      <span><%= image_tag wicked_pdf_asset_base64('hospital') %></span>
+      <span>Date of Visit: <%= @visit.created_at.strftime("%m/%d/%Y") %></span>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="header">
+    <%#= image_tag("hospital.jpeg")%>
+    <%#= wicked_pdf_image_tag 'hospital.jpeg' %>
+    <h1><strong>Prescription Details</strong></h1>
+
+    <h3>Doctor's Name: <%= current_doctor.name %></h3>
+    <h3>Doctor's Email: <%= current_doctor.email %></h3>
+    <h3>Patient's Name: <%= @patient.name %></h3>
+    <h3>Patient's Age: <%= @patient.age %></h3>
+
+  </div>
+  <table>
+    <thead>
+    <tr>
+      <th>Medicine Name</th>
+      <th>Dosage in mg/ml</th>
+      <th>Per day Dosage</th>
+      <th>In-take for</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @medicines.each do |medicine| %>
+      <tr>
+        <td><%= medicine.name %></td>
+        <td><%= medicine.dosage %></td>
+        <td><%= medicine.frequency %></td>
+        <td><%= medicine.duration %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <div class="flexrow" style="background-color: #e7e4e4; padding: 10px">
+    <div>
+      <h4>DR.<%= current_doctor.name %></h4>
+      <div>
+        Email me at: <%=current_doctor.email %>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <p class="text-center">&copy; 2023, DoctorPrescription.com</p>
+</div>
+

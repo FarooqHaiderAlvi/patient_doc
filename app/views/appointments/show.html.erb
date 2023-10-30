@@ -1,5 +1,6 @@
 Your appointment Is scheduled with
+
 <%=@patient.name %>
- on <strong> <%=@appointment.appointment_date %> </strong>
-</h1>
+  on <strong><%= @appointment.appointment_date.strftime("%Y-%m-%d %I:%M %p") %></strong>
+ 
 

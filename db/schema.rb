@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_24_073150) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_30_110751) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -60,6 +60,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_24_073150) do
     t.index ["reset_password_token"], name: "index_doctors_on_reset_password_token", unique: true
   end
 
+  create_table "medicines", force: :cascade do |t|
+    t.string "name"
+    t.integer "frequency"
+    t.integer "dosage"
+    t.integer "duration"
+    t.integer "prescription_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["prescription_id"], name: "index_medicines_on_prescription_id"
+  end
+
   create_table "patients", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -68,6 +79,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_24_073150) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_patients_on_doctor_id"
+  end
+
+  create_table "prescriptions", force: :cascade do |t|
+    t.integer "visit_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["visit_id"], name: "index_prescriptions_on_visit_id"
   end
 
   create_table "visits", force: :cascade do |t|
@@ -80,6 +98,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_24_073150) do
 
   add_foreign_key "appointments", "doctors"
   add_foreign_key "appointments", "patients"
+  add_foreign_key "medicines", "prescriptions"
   add_foreign_key "patients", "doctors"
+  add_foreign_key "prescriptions", "visits"
   add_foreign_key "visits", "appointments"
 end

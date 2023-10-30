@@ -1,0 +1,43 @@
+<%= form_with model: [@prescription, @medicine] do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    <% @medicine.errors.full_messages_for(:name).each do |message| %>
+    <div class="errors"><%= message %></div>
+  <% end %>
+
+  </p>
+
+  <p>
+    <%= form.label :frequency %><br>
+    <%= form.number_field :frequency %>
+    <% @medicine.errors.full_messages_for(:frequency).each do |message| %>
+    <div class="errors"><%= message %></div>
+  <% end %>
+  </p>
+  <p>
+    <%= form.label :dosage %><br>
+    <%= form.number_field :dosage %>
+    <% @medicine.errors.full_messages_for(:dosage).each do |message| %>
+    <div class="errors"><%= message %></div>
+  <% end %>
+  </p>
+
+  <p>
+
+    <%= form.label :duration %><br>
+    <%= form.number_field :duration %>
+    <% @medicine.errors.full_messages_for(:duration).each do |message| %>
+        <div class="errors"><%= message %></div>
+     <% end %>
+
+  </p>
+  <br>
+  <p>
+    <%= form.submit 'Add medicine'  %>
+
+  </p>
+<% end %>
+<br>
+<br>
+<br>

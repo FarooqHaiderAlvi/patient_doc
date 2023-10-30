@@ -13,6 +13,14 @@ Rails.application.routes.draw do
     resources :visits
   end
 
+  resources :prescriptions do
+    resources :medicines
+  end
+
+  resources :visits do
+    resources :prescriptions
+  end
+
   resources :doctors do
     resources :appointments
     resources :patients do
